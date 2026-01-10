@@ -8,12 +8,21 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        //Plan:
+        //a) Create an array of size 'length'.
+        //b) Loop from i = 0 to i < length.
+        //c) For each i, calculate number * (i + 1).
+        //d) Store the result in the array at index i.
+        //e) Return the completed array.
 
-        return []; // replace this return statement with your own
+        double[] result = new double[length];
+
+        for (int i = 0; i < length;i++)
+        {
+            result[i] = number * (i+1);
+        
+        }
+        return result;
     }
 
     /// <summary>
@@ -25,9 +34,25 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+       // Plan:
+       //a) Get the total number of elements in the list(n).
+       //b) Calculate the split point: n - amount.
+       //c) Use GetRange to get:
+       //   tail = last 'amount' elements
+       //   head = first 'n-amount' elements
+       //d) Clear the original list.
+       //e) Add tail first, then head to rebuild the list.
+
+       int n = data.Count;
+       amount = amount % n;
+
+       List<int> tail = data.GetRange(n - amount, amount);
+       List<int> head = data.GetRange(0, n - amount);
+
+       data.Clear();
+       data.AddRange(tail);
+       data.AddRange(head);
     }
 }
+
+
