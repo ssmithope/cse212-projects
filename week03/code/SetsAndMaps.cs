@@ -62,7 +62,7 @@ public static class SetsAndMaps
             if (!degrees.ContainsKey(degree)) degrees[degree] = 1; 
             else degrees[degree]++; 
         }
-        
+
         return degrees;
     }
 
@@ -154,6 +154,7 @@ public static class SetsAndMaps
         // 3. Return an array of these string descriptions.
         
         var results = new List<string>(); 
+        
         foreach (var feature in featureCollection.Features) 
         { 
             var place = feature.Properties.Place; 
