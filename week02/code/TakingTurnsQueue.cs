@@ -34,7 +34,6 @@ public class TakingTurnsQueue
     public Person GetNextPerson()
     {
         if (_people.IsEmpty())
-<<<<<<< HEAD
             throw new InvalidOperationException("No one in the queue.");
         
         Person person = _people.Dequeue();
@@ -51,31 +50,7 @@ public class TakingTurnsQueue
 
         return person;   
     }
-=======
-        
-            throw new InvalidOperationException("No one in the queue.");
-        
-        Person person = _people.Dequeue();
 
-        if (person.Turns <= 0)
-        {
-            _people.Enqueue(person);
-        }
-
-        else if (person.Turns > 1)
-        {
-            person.Turns -= 1;
-            _people.Enqueue(person);
-        }
-
-        else
-        {
-            person.Turns = 0;
-        }
->>>>>>> ef7a75cd9443149ebf88c9e70d574f29f9e31f6a
-
-        return person;
-    }
 }
 
 
