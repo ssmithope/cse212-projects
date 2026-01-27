@@ -51,11 +51,10 @@ public class TakingTurnsQueue
         return person;   
     }
 
+
+
+    public override string ToString()
+    {
+        return _people.ToString();
+    }
 }
-
-
-
-    //public override string ToString()
-    //{
-    //    return _people.ToString();
-    //}
