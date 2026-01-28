@@ -24,15 +24,22 @@ public static class SetsAndMaps
         // TODO Problem 1 - ADD YOUR CODE HERE
         var seen = new HashSet<string>(); 
         var results = new List<string>(); 
+        
         foreach (var word in words) 
         { 
             if (word[0] == word[1]) continue; 
             
             var reversed = $"{word[1]}{word[0]}"; 
             
-            if (seen.Contains(reversed)) results.Add($"{word} & {reversed}"); seen.Add(word); 
+            if (seen.Contains(reversed)) 
+            {
+                results.Add($"{word} & {reversed}"); 
+                
+            }    
             
-        }
+            seen.Add(word); 
+        }   
+    
 
         return results.ToArray();
     }
