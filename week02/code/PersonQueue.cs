@@ -8,16 +8,20 @@ public class PersonQueue
     public int Length => _queue.Count;
 
     /// <summary>
-    /// Add a person to the queue
+    /// Add a person to the queue (FIFO)
     /// </summary>
-    /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        // Add to the back
+        _queue.Add(person);
     }
 
     public Person Dequeue()
     {
+        if (_queue.Count == 0)
+            throw new InvalidOperationException("The queue is empty.");
+
+        // Remove from the front
         var person = _queue[0];
         _queue.RemoveAt(0);
         return person;

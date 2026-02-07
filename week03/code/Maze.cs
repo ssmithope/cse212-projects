@@ -30,14 +30,29 @@ public class Maze
     /// Check to see if you can move left.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
     /// </summary>
+    
+    private bool[] GetDirectionsOrFail() 
+    { 
+        if (!_mazeMap.TryGetValue((_currX, _currY), out var dirs)) 
+            throw new InvalidOperationException("Can't go that way!"); 
+        
+        return dirs; 
+    }
+
     public void MoveLeft()
     {
         // FILL IN CODE
-        var directions = _mazeMap[(_currX, _currY)];
-        if (!directions[0])
-            throw new InvalidOperationException("Can't go that way!");
-        _currX--;
+        var dirs = GetDirectionsOrFail(); 
         
+        if (!dirs[0]) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
+        var newPos = (_currX - 1, _currY); 
+        
+        if (!_mazeMap.ContainsKey(newPos)) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
+        _currX--;
     }
 
     /// <summary>
@@ -47,11 +62,16 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
-        var directions = _mazeMap[(_currX, _currY)];
+        var dirs = GetDirectionsOrFail(); 
         
-        if (!directions[1])
-            throw new InvalidOperationException("Can't go that way!");
-
+        if (!dirs[1]) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
+        var newPos = (_currX + 1, _currY); 
+        
+        if (!_mazeMap.ContainsKey(newPos)) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
         _currX++;
     }
 
@@ -62,11 +82,16 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
-        var directions = _mazeMap[(_currX, _currY)];
-
-        if (!directions[2])
-            throw new InvalidOperationException("Can't go that way!");
-
+        var dirs = GetDirectionsOrFail(); 
+        
+        if (!dirs[2]) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
+        var newPos = (_currX, _currY + 1); 
+        
+        if (!_mazeMap.ContainsKey(newPos)) 
+            throw new InvalidOperationException("Can't go that way!"); 
+            
         _currY++;
     }
 
@@ -77,11 +102,16 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
-         var directions = _mazeMap[(_currX, _currY)];
-
-        if (!directions[3])
-            throw new InvalidOperationException("Can't go that way!");
-
+        var dirs = GetDirectionsOrFail(); 
+        
+        if (!dirs[3]) 
+            throw new InvalidOperationException("Can't go that way!"); 
+        
+        var newPos = (_currX, _currY - 1); 
+        
+        if (!_mazeMap.ContainsKey(newPos)) 
+            throw new InvalidOperationException("Can't go that way!"); 
+        
         _currY--;
     }
 
